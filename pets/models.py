@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class SexOptions(models.TextChoices):
+class SexChoices(models.TextChoices):
     MALE = "Male"
     FEMALE = "Female"
     DEFAULT = "Not Informed"
@@ -12,7 +12,7 @@ class Pet(models.Model):
     age = models.IntegerField()
     weight = models.FloatField()
     sex = models.CharField(
-        max_length=20, choices=SexOptions.choices, default=SexOptions.DEFAULT
+        max_length=20, choices=SexChoices.choices, default=SexChoices.DEFAULT
     )
     group = models.ForeignKey(
         "groups.Group", on_delete=models.PROTECT, related_name="pets"
